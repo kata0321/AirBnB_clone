@@ -22,7 +22,3 @@ class BaseModel:
         dict_provide['created_at'] = self.created_at.isoformat()
         dict_provide['updated_at'] = self.updated_at.isoformat()
         return dict_provide
-if __name__ == "__main__":
-    instance = BaseModel()
-    print(instance)
-    print(instance.to_dict())
