@@ -1,4 +1,5 @@
 # tests/test_models/test_base_model.py
+from models import storage
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
