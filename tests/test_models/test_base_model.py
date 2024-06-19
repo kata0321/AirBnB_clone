@@ -33,5 +33,18 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(instance_dict['created_at'], instance.created_at.isoformat())
         self.assertEqual(instance_dict['updated_at'], instance.updated_at.isoformat())
 
+    def test_instance_creation_kwargs(self):
+        instance = BaseModel()
+        instance.name = "My_First_Model"
+        instance.my_number = 89
+        instance.dict = instance.to_dict()
+
+        unique_instance = BaseModel(**instance.dict)
+        self.assertIsInstance(unique_instance, BaseModel)
+        self.assertEqual(unique_instance.id, instance.id)
+        self.assertEqual(unique_instance.created_at, instance.created_at)
+        self.asserEqual(unique_instance.name, instance.name)
+        self.assertEqual(unique_instance.my_number, instance.my_number)
+
 if __name__ == '__main__':
     unittest.main()
