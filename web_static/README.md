@@ -1,1 +1,1 @@
-Air_bnb_html
+webstatic
