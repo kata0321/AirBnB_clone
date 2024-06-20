@@ -1,16 +1,20 @@
-#!/usr/bin/python3
-import datatime
 import json
 import os
 
 class FileStorage:
-    _file_path = 'file.json'
-    _objects = {}
+    """
+    Serializes instances to a JSON file and deserializes JSON file to instances.
+    """
+    __file_path = "file.json"
+    __objects = {}
     def all(self):
+        """
+        Returns the dictionary __objects.
+        """
         return self._objects
     def new(self, obj):
         key = f"{obj.__class__.__name__}.{obj.id}"
-        self._objects[key] = obj
+        self.__objects[key] = obj
    def save(self):
         with open(self.__file_path, 'w') as f:
             json_objects = {k: v.to_dict() for k, v in self.__objects.items()}
