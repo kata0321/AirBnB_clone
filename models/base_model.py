@@ -5,7 +5,7 @@ from datetime import datetime
 class BaseModel:
     def __init__(self, *args, **kwargs):
         if kwargs:
-            for key_value in kwargs.items():
+            for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
                       value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 setattr(self, key, value)
@@ -28,9 +28,3 @@ class BaseModel:
         dict_provide['created_at'] = self.created_at.isoformat()
         dict_provide['updated_at'] = self.updated_at.isoformat()
         return dict_provide
-bm1 = BaseModel()
-bm2 = BaseModel(**bm1.to_dict())
-
-print(bm1)
-print(bm2)
-print(bm1.to_dict() == bm2.to_dict())
