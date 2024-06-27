@@ -1,4 +1,4 @@
-# tests/test_models/test_base_model.py
+#!/usr/bin/python3
 from models import storage
 import unittest
 from models.base_model import BaseModel
@@ -38,13 +38,13 @@ class TestBaseModel(unittest.TestCase):
         instance = BaseModel()
         instance.name = "My_First_Model"
         instance.my_number = 89
-        instance.dict = instance.to_dict()
+        instance_dict = instance.to_dict()
 
-        unique_instance = BaseModel(**instance.dict)
+        unique_instance = BaseModel(**instance_dict)
         self.assertIsInstance(unique_instance, BaseModel)
         self.assertEqual(unique_instance.id, instance.id)
         self.assertEqual(unique_instance.created_at, instance.created_at)
-        self.asserEqual(unique_instance.name, instance.name)
+        self.assertEqual(unique_instance.name, instance.name)
         self.assertEqual(unique_instance.my_number, instance.my_number)
 
 if __name__ == '__main__':
