@@ -28,7 +28,6 @@ class BaseModel:
         dict_provide['created_at'] = self.created_at.isoformat()
         dict_provide['updated_at'] = self.updated_at.isoformat()
         return dict_provide
-sh: 1: q: not found
 bm1 = BaseModel()
 bm2 = BaseModel(**bm1.to_dict())
 
